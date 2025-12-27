@@ -1,19 +1,32 @@
-# This is a sample Python script.
+import tkinter as tk
+from tkinter import messagebox
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# 1. THE BRAIN (Logic)
+def recommend_course():
+    user_interest = entry.get().lower()
+    
+    # Simple logic: If user mentions 'car', suggest Automotive
+    if "car" in user_interest or "engine" in user_interest:
+        result = "Recommended: Automotive Engineering"
+    elif "computer" in user_interest or "code" in user_interest:
+        result = "Recommended: Information Technology"
+    else:
+        result = "Try keywords like 'car' or 'computer'."
+        
+    messagebox.showinfo("Result", result)
 
+# 2. THE FACE (GUI)
+root = tk.Tk()
+root.title("T-VET Recommender")
+root.geometry("400x300")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+label = tk.Label(root, text="Enter your interest:")
+label.pack(pady=10)
 
+entry = tk.Entry(root, width=40)
+entry.pack(pady=5)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+btn = tk.Button(root, text="Find Course", command=recommend_course)
+btn.pack(pady=20)
 
-
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+root.mainloop()
